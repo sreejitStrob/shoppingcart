@@ -69,18 +69,18 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="/Products">Home</a></li>
+                    <li class="active"><a href="/Products">Shop</a></li>
+                  
+                    <li><a href="/shopping_cart">Cart</a></li>
+                    <li><a href="">Checkout</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
           
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                <a href="/shopping_cart" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span >(<span id="cart_number">{{$cart_counter_uni}}</span>)</span></a>
                 <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
                 <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
             </div>

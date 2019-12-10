@@ -34,6 +34,7 @@ class CartsController extends Controller
      */
     public function store(Request $request)
     {
+        
       
         $hardcoded_user_id="1";
         $add_to_cart=new Cart;

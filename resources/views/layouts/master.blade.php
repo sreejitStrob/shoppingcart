@@ -222,7 +222,7 @@ to get the desired effect
                 </a>
               </li>
                  <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/abandoned_cart" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Cart List</p>
                 </a>
@@ -240,7 +240,7 @@ to get the desired effect
 
      
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
                 Master
@@ -254,11 +254,11 @@ to get the desired effect
    
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
+            <a href="/logout" class="nav-link">
+            <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
               <p>
-                Documentation
-                <span class="badge badge-info right">2</span>
+                Logout
+               
               </p>
             </a>
           </li>

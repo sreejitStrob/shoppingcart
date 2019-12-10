@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Cart;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('layouts.homepage', function($view)
+        {
+            $view->with('cart_count',Cart::count());
+        });
     }
 
     /**

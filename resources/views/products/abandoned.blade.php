@@ -21,7 +21,7 @@
 
 <ul class="nav nav-pills">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#opened_cases">List of Items</a>
+        <a class="nav-link active" data-toggle="tab" href="#opened_cases">Abandoned Cart</a>
     </li>
  
 </ul>
@@ -31,13 +31,13 @@
 <table id="example" class="hover" style="width:100%">
            <thead class="table_head">
          
-                <th>Item ID</th>
+                <th>ID</th>
                 <th>Image</th>
+                <th>User id</th>
                 <th>Item Title</th>
                 <th>Price</th>
-                <th>Description</th>
-                <th>Created on</th>
-                <th>View</th>
+               <th>Created on</th>
+               
              
                 
       
@@ -54,21 +54,19 @@
            </td>
       -->
         <tbody>
-        @foreach($all_items as $item)
-        <tr>
-           
-            <td>{{$item->id}}</td>
-            <td> <img class='img-circle elevation-2' src='upload/{{$item->primary_image}}' alt='logo' weight='100px' height='100px'></td>
-            <td>{{$item->product_name}}</td>
-            <td>{{$item->price}}</td>
-            <td>{{$item->description}}</td>
-            <td>{{$item->created_at}}</td>
-            <td> <a href="product_details/{{$item->id}}" class="nav-link">Preview Item</a></td>
- 
-              
-               
-         </tr>   
-         @endforeach 
+        @foreach($item_in_cart as $single_uni_item)
+            <tr>
+                <td>{{$single_uni_item->id}}</td>
+                <td> <img class="img-circle elevation-2" src="upload/{{$single_uni_item->primary_image}}" alt="logo" weight="100px" height="100px"></td>
+                <td>{{$single_uni_item->user_id}}</td>
+                <td>{{$single_uni_item->product_name}}</td>
+                <td>{{$single_uni_item->price}}</td>
+                <td>{{$single_uni_item->created_at}}</td>
+
+            </tr>
+
+        @endforeach
+   
             </tbody>
         
     </table>

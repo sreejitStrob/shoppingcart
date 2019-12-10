@@ -126,7 +126,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
- alert("reached here");
+ //alert("reached here");
 
     
 
@@ -151,8 +151,10 @@ $(document).ready(function() {
                 success: function (data) {
                   if(data=="saved")
                   {
-
-
+                    var cart_number =  $('#cart_number')[0].innerHTML;
+                        var cart_number=parseInt(cart_number);
+                        alert("Item has been saved to cart!!");
+                        $("#cart_number").html(cart_number+1);
                   }
                    
                 else{

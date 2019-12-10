@@ -12,6 +12,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         
@@ -98,6 +102,17 @@ class ProductsController extends Controller
         return view('products.listproducts')->with('all_items',$all_products);
     }
     
+    public function abandonedcart()
+    {
+        
+        $items_in_cart = DB::table('carts')
+            ->leftJoin('products', 'carts.product_id_true', '=', 'products.id')
+            ->where('carts.user_id','=','1')
+            ->get();
+            
+        return view('products.abandoned')->with('item_in_cart',$items_in_cart);
+
+    }
 
     /**
      * Show the form for editing the specified resource.

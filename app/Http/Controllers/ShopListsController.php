@@ -30,7 +30,14 @@ class ShopListsController extends Controller
 
     public function showcart()
     {
-        return view('shoppinglist.cart');
+        $items_in_cart = DB::table('carts')
+            ->leftJoin('products', 'carts.product_id_true', '=', 'products.id')
+            ->where('carts.user_id','=','1')
+            ->get();
+            
+       
+
+        return view('shoppinglist.cart')->with('item_in_cart',$items_in_cart);
 
     }
 

@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to('login');
+ });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,6 +30,7 @@ Route::get('/product_details/{id}', 'ShopListsController@productdetails')->name(
 
 Route::get('/Add_Product', 'ProductsController@index')->name('add_product_true');
 Route::get('/product_list', 'ProductsController@show')->name('prodcut_list');
+Route::get('/abandoned_cart', 'ProductsController@abandonedcart')->name('cart_list');
 
 
 
