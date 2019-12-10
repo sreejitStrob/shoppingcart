@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use DB;
-class ShopListsController extends Controller
+use App\Cart;
+class CartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ShopListsController extends Controller
      */
     public function index()
     {
-        $all_products=Product::all();
-        return view('shoppinglist.shoppinglist')->with('all_items',$all_products);
+        //
     }
 
     /**
@@ -28,21 +26,6 @@ class ShopListsController extends Controller
         //
     }
 
-    public function showcart()
-    {
-        return view('shoppinglist.cart');
-
-    }
-
-    public function productdetails($id)
-    {
-       
-        $singleitem = Product::where('id',$id)->first();
-        if ($singleitem==NULL) {
-            abort(404);
-        }
-        return view('shoppinglist.description')->with('singleitem',$singleitem);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +34,24 @@ class ShopListsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $hardcoded_user_id="1";
+        $add_to_cart=new Cart;
+        $add_to_cart->user_id=$hardcoded_user_id;
+        $add_to_cart->product_id_true=$request->pid;
+        try {
+            $add_to_cart->save();
+                if($add_to_cart->save())
+                {
+                    return "saved";
+
+                }
+          
+          } catch (\Illuminate\Database\QueryException $e) {
+              var_dump($e->errorInfo);
+          }
+
+
     }
 
     /**

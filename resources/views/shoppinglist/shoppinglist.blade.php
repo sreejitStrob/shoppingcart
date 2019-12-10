@@ -47,7 +47,7 @@
                 <div class="row">
                     @foreach($all_items as $single_item)
                     <!-- Single Product Area -->
-                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6"  onclick="window.location = '/product_details/{{$single_item->id}}'">
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">

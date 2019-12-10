@@ -10,9 +10,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mt-50">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
+                                <li class="breadcrumb-item"><a href="#">{{$singleitem->category}}</a></li>
+                               
                             </ol>
                         </nav>
                     </div>
@@ -23,34 +22,34 @@
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url({{asset('amado/img/core-img/logo.png')}});">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(/upload/{{$singleitem->primary_image}});">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url({{asset('amado/img/core-img/logo.png')}});">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(/upload/{{$singleitem->img2}});">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url({{asset('amado/img/core-img/logo.png')}});">
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(/upload/{{$singleitem->img3}});">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url({{asset('amado/img/core-img/logo.png')}});">
+                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(/upload/{{$singleitem->img4}});">
                                     </li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="{{asset('amado/img/core-img/logo.png')}}">
-                                            <img class="d-block w-100" src="{{asset('amado/img/core-img/logo.png')}}">
+                                        <a class="gallery_img" href="/upload/{{$singleitem->primary_image}}">
+                                            <img class="d-block w-100" src="/upload/{{$singleitem->primary_image}}">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="{{asset('amado/img/core-img/logo.png')}}">
-                                            <img class="d-block w-100" src="{{asset('amado/img/core-img/logo.png')}}" alt="Second slide">
+                                        <a class="gallery_img" href="/upload/{{$singleitem->img2}}">
+                                            <img class="d-block w-100" src="/upload/{{$singleitem->img2}}" alt="Second slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="{{asset('amado/img/core-img/logo.png')}}">
-                                            <img class="d-block w-100" src="{{asset('amado/img/core-img/logo.png')}}" alt="Third slide">
+                                        <a class="gallery_img" href="/upload/{{$singleitem->img3}}">
+                                            <img class="d-block w-100" src="/upload/{{$singleitem->img3}}" alt="Third slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="{{asset('amado/img/core-img/logo.png')}}">
-                                            <img class="d-block w-100" src="{{asset('amado/img/core-img/logo.png')}}" alt="Fourth slide">
+                                        <a class="gallery_img" href="/upload/{{$singleitem->img4}}">
+                                            <img class="d-block w-100" src="/upload/{{$singleitem->img4}}" alt="Fourth slide">
                                         </a>
                                     </div>
                                 </div>
@@ -62,9 +61,9 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">$180</p>
+                                <p class="product-price">$  {{$singleitem->price}}</p>
                                 <a href="product-details.html">
-                                    <h6>White Modern Chair</h6>
+                                    <h6>{{$singleitem->product_name}}</h6>
                                 </a>
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
@@ -84,20 +83,17 @@
                             </div>
 
                             <div class="short_overview my-5">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                                <p>{{$singleitem->description}}</p>
                             </div>
 
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix" method="post">
+                            <form class="cart clearfix" id="add_to_cart">
+                            {{csrf_field()}}
                                 <div class="cart-btn d-flex mb-50">
-                                    <p>Qty</p>
-                                    <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
-                                    </div>
+                                   <input type="text" id="pid" name="pid" value="{{request()->route('id')}}" hidden>
+                                   
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                                <button type="button" name="addtocart" id="add_to_cart_true" value="5" class="btn amado-btn">Add to cart</button>
                             </form>
 
                         </div>
@@ -105,4 +101,88 @@
                 </div>
             </div>
         </div>
+        <script>
+        $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(document).ready(function() {
+
+
+
+    
+
+    });
+
+        </script>
+@endsection
+@section('javascript')
+<script>
+ $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(document).ready(function() {
+
+ alert("reached here");
+
+    
+
+    });
+
+    
+
+    $('#add_to_cart_true').click(function (e) {
+        e.preventDefault();
+        
+        var myForm = document.getElementById('add_to_cart');
+        var formData = new FormData(myForm);
+  
+       
+                $.ajax({
+                data: formData,
+                url: "/add_product_to_cart",
+                type: "POST",
+                processData:false,
+                contentType:false,
+                cache:false,
+                success: function (data) {
+                  if(data=="saved")
+                  {
+
+
+                  }
+                   
+                else{
+
+                    alert("Product already in cart");
+                }
+                    
+                  
+                    
+                // setTimeout(function() { location.reload(); }, 2000); 
+                
+                },
+                
+                
+            });
+   
+   
+        
+       
+    });
+
+  
+
+ 
+
+
+
+
+
+
+
+</script>
 @endsection
