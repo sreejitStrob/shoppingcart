@@ -92,10 +92,12 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $all_products= Product::all();
+        return view('products.listproducts')->with('all_items',$all_products);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

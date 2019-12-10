@@ -216,7 +216,7 @@ to get the desired effect
               </a>
              </li>
               <li class="nav-item">
-                <a href="/prodct_list" class="nav-link">
+                <a href="/product_list" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>View Product List</p>
                 </a>
@@ -230,18 +230,8 @@ to get the desired effect
               <li class="nav-item has-treeview">
            
            
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Performance</p>
-                </a>
-              </li>
-               <li class="nav-item">
-                <a href="/sellerlevel" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Seller Level</p>
-                </a>
-              </li>
+            
+            
             </ul>
             
           </li>

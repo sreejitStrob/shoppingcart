@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Product;
+use DB;
 class ShopListsController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class ShopListsController extends Controller
      */
     public function index()
     {
-        return view('layouts.homepage');
+        $all_products=Product::all();
+        return view('shoppinglist.shoppinglist')->with('all_items',$all_products);
     }
 
     /**
@@ -26,6 +28,16 @@ class ShopListsController extends Controller
         //
     }
 
+    public function showcart()
+    {
+        return view('shoppinglist.cart');
+
+    }
+
+    public function productdetails()
+    {
+        return view('shoppinglist.description');
+    }
     /**
      * Store a newly created resource in storage.
      *
