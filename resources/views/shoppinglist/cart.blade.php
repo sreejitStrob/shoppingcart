@@ -1,7 +1,7 @@
 @extends('layouts.homepage')
 
 @section('content')
-
+{{csrf_field()}}
 <div class="cart-table-area section-padding-100">
             <div class="container-fluid">
                 <div class="row">
@@ -21,6 +21,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                
                                 @foreach($item_in_cart as $single_cart_item)
                                     <tr>
                                         <td class="cart_product_img">
@@ -40,6 +41,7 @@
                                                     <input type="number" class="qty-text" id="qty2" step="1" min="1" max="300" name="quantity" value="1">
                                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty2'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                                 </div>
+                                                <button onclick="delete_from_cart({{$single_cart_item->id}})" type="button" class="btn btn-danger">X</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -73,4 +75,59 @@
                 </div>
             </div>
         </div>
+@endsection
+@section('javascript')
+<script>
+ $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(document).ready(function() {
+
+ //alert("reached here");
+
+    
+
+    });
+
+    function delete_from_cart(pid)
+    {
+        alert(pid);
+        $.ajax({
+                
+                url: "/delete_from_cart/"+pid,
+                type: "GET",
+                processData:false,
+                contentType:false,
+                cache:false,
+                success: function (data) {
+                    
+                  if(data=="deleted")
+                  {
+                    var cart_number =  $('#cart_number')[0].innerHTML;
+                        var cart_number=parseInt(cart_number);
+                        //alert("Item has been deleted from cart!!");
+                        $("#cart_number").html(cart_number-1);
+                        location.reload();
+                  }
+                   
+                else{
+
+                    //alert("Some error has occured!");
+                }
+                    
+                  
+                    
+                // setTimeout(function() { location.reload(); }, 2000); 
+                
+                },
+                
+                
+            });
+
+
+    }
+    
+</script>
 @endsection

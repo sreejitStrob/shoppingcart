@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use DB;
+use App\Cart;
 class ShopListsController extends Controller
 {
     /**
@@ -49,6 +50,26 @@ class ShopListsController extends Controller
             abort(404);
         }
         return view('shoppinglist.description')->with('singleitem',$singleitem);
+    }
+
+
+
+    public function delete_from_cart($id)
+    {
+
+
+       
+        $res=Cart::where('product_id_true',$id)->delete();
+        if($res)
+        {
+
+            return "deleted";
+        }
+        else{
+
+            return "messedup";
+        }
+       
     }
     /**
      * Store a newly created resource in storage.

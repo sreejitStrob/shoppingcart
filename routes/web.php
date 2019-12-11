@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Products', 'ShopListsController@index')->name('Productline');
 Route::get('/shopping_cart', 'ShopListsController@showcart')->name('cart_list');
 Route::get('/product_details/{id}', 'ShopListsController@productdetails')->name('product_description');
+Route::get('/delete_from_cart/{id}', 'ShopListsController@delete_from_cart')->name('delete_cart_item');
 
 Route::get('/Add_Product', 'ProductsController@index')->name('add_product_true');
 Route::get('/product_list', 'ProductsController@show')->name('prodcut_list');
